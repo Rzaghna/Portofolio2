@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portofolio_AghnaRezza</title>
+  <title>Portofolio_Aghna Razaky Alfi Syahriza</title>
   <style>
     :root {
       --primary: #05ffff;
@@ -13,7 +13,7 @@
       --text: #1e293b;
     }
 
-    [data-theme="dark"] {
+    :root[data-theme="dark"] {
       --primary: #1e293b;
       --accent: #3b82f6;
       --bg: #0f172a;
@@ -22,7 +22,7 @@
     }
 
     @media (prefers-color-scheme: dark) {
-      :root {
+      :root:not([data-theme]) {
         --primary: #1e293b;
         --accent: #3b82f6;
         --bg: #0f172a;
@@ -122,25 +122,26 @@
       color: #475569;
       transition: 0.3s;
     }
-  </style>
-  <!-- <script>
-    function toggleTheme() {
-      const html = document.documentElement;
-      const current = html.getAttribute("data-theme");
-      if (current === "dark") {
-        html.setAttribute("data-theme", "light");
-        localStorage.setItem("theme", "light");
-      } else {
-        html.setAttribute("data-theme", "dark");
-        localStorage.setItem("theme", "dark");
-      }
-    }
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const html = document.documentElement;
+  const toggleBtn = document.getElementById("theme-toggle");
 
-    window.onload = () => {
-      const saved = localStorage.getItem("theme");
-      if (saved) document.documentElement.setAttribute("data-theme", saved);
-    }
-  </script> -->
+  // Load saved theme
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) {
+    html.setAttribute("data-theme", savedTheme);
+  }
+
+  // Toggle action
+  toggleBtn.addEventListener("click", () => {
+    const now = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", now);
+    localStorage.setItem("theme", now);
+  });
+});
+</script>
+
 </head>
 <body>
   <header>
@@ -210,6 +211,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
